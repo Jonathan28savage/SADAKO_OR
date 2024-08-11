@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SADAKO</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: "Arial";
+        font-weight: 500;
+      }
+
+      body {
+        background: url("images/bck.jpg") no-repeat center center fixed;
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+
+      .form-card {
+        background: rgba(
+          255,
+          255,
+          255,
+          0.9
+        ); /* Light white background with some transparency */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .form-card .card-header {
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+      }
+
+      .file {
+        visibility: hidden;
+        position: absolute;
+      }
+
+      a {
+        color: blue;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-card">
+        <div class="card">
+          <div class="card-header text-center font-weight-bold">
+            <h2>
+              Sistem Aplikasi Data Pemeriksaan Online (SADAKO) <br />
+              BPJS Kesehatan Cabang Jakarta Utara
+            </h2>
+          </div>
+          <div class="card-body">
+            <h6>
+              <p>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1O7SE0lFx8Io2dIZjkDzocye2nUsuKlbKQ21q4dALhBY/edit?hl=id&gid=2070164376#gid=2070164376"
+                  target="_blank"
+                  >Contoh berkas pemeriksaan dapat diakses pada link berikut
+                </a>
+              </p>
+            </h6>
+            <form
+              method="POST"
+              id="dataForm"
+              enctype="multipart/form-data"
+              action="https://script.google.com/macros/s/AKfycbyNVz-jJ-Qx6Ijr47_TOvrehRGWQ-3h8_xxE4CB8UNRPcMBdlBcZaGJiT9oqgIapKtJ/exec"
+              onsubmit="handleSubmit(event)"
+            >
+              <div class="form-group">
+                <label for="Nama BU"
+                  ><b>Nama Badan Usaha</b> <br />Tuliskan nama badan usaha
+                  <b>TANPA</b> menggunakan "PT/CV/Yayasan/dsb" contoh: PT Sukses
+                  Maju, maka cukup dituliskan "Sukses Maju"</label
+                >
+                <input
+                  type="text"
+                  name="Nama BU"
+                  class="form-control"
+                  id="Nama BU"
+                  placeholder="Nama Badan Usaha"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="Kode BU"
+                  ><b>Kode Badan Usaha</b> <br />
+                  Contoh : 001165555</label
+                >
+                <input
+                  type="text"
+                  name="Kode BU"
+                  class="form-control"
+                  id="Kode BU"
+                  placeholder="Kode Badan Usaha"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="RO"><b>Relationship Officer</b></label>
+                <select class="form-control" name="RO" id="RO">
+                  <option>Pilih :</option>
+                  <option value="Fajar">Fajar +62 811896605</option>
+                  <option value="Maya">Maya +62 8119233349</option>
+                  <option value="Zulfa">Zulfa +62 8118994550</option>
+                  <option value="Dara">Dara +62 8111707242</option>
+                  <option value="Lia">Lia +62 8119552626</option>
+                  <option value="Irfan">Irfan +62 8119797833</option>
+                  <option value="Made">Made +62 81222423999</option>
+                  <option value="Ikhsan">Ikhsan +62 8118121190</option>
+                  <option value="Naufal">Naufal +62 81110001065</option>
+                  <option value="Indah">Indah +62 8111461141</option>
+                  <option value="Uti">Uti +62 8111240210</option>
+                  <option value="Faldy">Faldy +62 81215314400</option>
+                  <option value="Tika">Tika +62 81285529592</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="PIC BU"><b>Nama PIC Badan Usaha</b></label>
+                <input
+                  type="text"
+                  name="PIC BU"
+                  class="form-control"
+                  id="PIC BU"
+                  placeholder="Nama PIC Badan Usaha"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="No.HP PIC"
+                  ><b>No. Handphone PIC Badan Usaha</b></label
+                >
+                <input
+                  type="text"
+                  name="No.HP PIC"
+                  class="form-control"
+                  id="No.HP PIC"
+                  placeholder="No. Handphone PIC Badan Usaha"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="Email PIC"><b>Email PIC Badan Usaha</b></label>
+                <input
+                  type="text"
+                  name="Email PIC"
+                  class="form-control"
+                  id="Email PIC"
+                  placeholder="Email PIC Badan Usaha"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="Pekerja Terdaftar BPJS"
+                  ><b
+                    >Jumlah Pekerja Terdaftar BPJS Kesehatan Badan Usaha</b
+                  ></label
+                >
+                <input
+                  type="text"
+                  name="Pekerja Terdaftar BPJS"
+                  class="form-control"
+                  id="Pekerja Terdaftar BPJS"
+                  placeholder="Jumlah Pekerja Terdaftar"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="Pekerja Belum Terdaftar BPJS"
+                  ><b
+                    >Jumlah Pekerja Belum Terdaftar BPJS Kesehatan Badan
+                    Usaha</b
+                  ></label
+                >
+                <input
+                  type="text"
+                  name="Pekerja Belum Terdaftar BPJS"
+                  class="form-control"
+                  id="Pekerja Belum Terdaftar BPJS"
+                  placeholder="Jumlah Pekerja Belum Terdaftar"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="Jumlah Pekerja Wajib Lapor Ketenagakerjaan (WLK)"
+                  ><b
+                    >Jumlah Pekerja Wajib Lapor Ketenagakerjaan (WLK)</b
+                  ></label
+                >
+                <input
+                  type="text"
+                  name="Jumlah Pekerja Wajib Lapor Ketenagakerjaan (WLK)"
+                  class="form-control"
+                  id="Jumlah Pekerja Wajib Lapor Ketenagakerjaan (WLK)"
+                  placeholder="Jumlah Pekerja WLK"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="pdfFile1"
+                  ><b
+                    >SPT Masa Pajak Penghasilan Pasal 21 dan/atau Pasal 26 bulan
+                    terakhir (Form 1721)</b
+                  ></label
+                ><br />
+                <div class="input-group my-3">
+                  <input
+                    type="file"
+                    name="pdfFile1"
+                    class="file"
+                    accept="application/pdf"
+                    id="pdfFile1"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    placeholder="Upload File"
+                    id="file1"
+                  />
+                  <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">
+                      Browse
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pdfFile2"
+                  ><b
+                    >Data kepesertaan Jaminan Ketenagakerjaan (BPJS
+                    Ketenagakerjaan) bulan berjalan (Form 2a PU)</b
+                  ></label
+                ><br />
+                <div class="input-group my-3">
+                  <input
+                    type="file"
+                    name="pdfFile2"
+                    class="file"
+                    accept="application/pdf"
+                    id="pdfFile2"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    placeholder="Upload File"
+                    id="file2"
+                  />
+                  <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">
+                      Browse
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pdfFile3"
+                  ><b
+                    >Data pekerja bulan berjalan dalam bentuk soft copy
+                    (payroll)</b
+                  ></label
+                ><br />
+                <div class="input-group my-3">
+                  <input
+                    type="file"
+                    name="pdfFile3"
+                    class="file"
+                    accept="application/pdf"
+                    id="pdfFile3"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    placeholder="Upload File"
+                    id="file3"
+                  />
+                  <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">
+                      Browse
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pdfFile4"
+                  ><b
+                    ><i>Billing Statement</i> Jaminan Ketenagakerjaan (BPJS
+                    Ketenagakerjaan) bulan berjalan (Form 2a)</b
+                  ></label
+                ><br />
+                <div class="input-group my-3">
+                  <input
+                    type="file"
+                    name="pdfFile4"
+                    class="file"
+                    accept="application/pdf"
+                    id="pdfFile4"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    placeholder="Upload File"
+                    id="file4"
+                  />
+                  <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">
+                      Browse
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pdfFile5"
+                  ><b
+                    >Form Pengalihan PBI Kesehatan yang diisi oleh PIC /
+                    Pimpinan dengan kop surat Badan Usaha (Format Terlampir pada
+                    Email)</b
+                  ></label
+                ><br />
+                <div class="input-group my-3">
+                  <input
+                    type="file"
+                    name="pdfFile5"
+                    class="file"
+                    accept="application/pdf"
+                    id="pdfFile5"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    placeholder="Upload File"
+                    id="file5"
+                  />
+                  <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">
+                      Browse
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="pdfFile6"
+                  ><b
+                    >Berkas Lainnya yang diperlukan (contoh: Format COEX dll)
+                    atau berkas pendukung lainnya (kolom ini mampu menampung
+                    hingga 10 file)</b
+                  ></label
+                ><br />
+                <div class="input-group my-3">
+                  <input
+                    type="file"
+                    name="pdfFile6"
+                    class="file"
+                    accept="application/pdf"
+                    id="pdfFile6"
+                  />
+                  <input
+                    type="text"
+                    class="form-control"
+                    disabled
+                    placeholder="Upload File"
+                    id="file6"
+                  />
+                  <div class="input-group-append">
+                    <button type="button" class="browse btn btn-primary">
+                      Browse
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="Keterangan">Keterangan</label>
+                <textarea
+                  class="form-control"
+                  id="Keterangan"
+                  name="Keterangan"
+                  rows="3"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-success btn-block mt-2">
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
